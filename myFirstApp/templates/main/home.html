@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primera plantilla</title>
+</head>
+<body>
+
+<div>
+    {% for company in companies %}
+        <h1>Compañia: {{company.name}}</h1>
+        <p>Owners: {{company.owners}}</p>
+        <p>Descripcion: {{company.description}}</p>
+        <p>Creacion: {{company.create_at}}</p>
+    {% endfor %}
+</div>
+
+</body>
+</html>
