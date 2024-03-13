@@ -7,15 +7,11 @@ from company.models import Company
 # Create your views here.
 
 def home_page(request):
-    companies = Company.objects.all()
+    peaku_companies = Company.objects.filter(name='PeakU')
 
-    try:
-        peaku_company = Company.objects.get(pk=1)
-        return render(request, 'main/home.html', {'company': peaku_company})
-    except ObjectDoesNotExist:
+    if not peaku_companies:
         return render(request, 'main/Error.html')
-
-    return render(request, 'main/home.html', {'companies': companies})
+    return render(request, 'main/home.html', {'companies': peaku_companies})
 
 def users_page(request):
     users = [
