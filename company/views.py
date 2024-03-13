@@ -1,3 +1,4 @@
+from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render
 
 from company.models import Company
@@ -7,6 +8,13 @@ from company.models import Company
 
 def home_page(request):
     companies = Company.objects.all()
+
+    try:
+        peaku_company = Company.objects.get(pk=1)
+        return render(request, 'main/home.html', {'company': peaku_company})
+    except ObjectDoesNotExist:
+        return render(request, 'main/Error.html')
+
     return render(request, 'main/home.html', {'companies': companies})
 
 def users_page(request):
